@@ -7,13 +7,13 @@
 //import org.springframework.web.bind.annotation.RestController;
 //
 //@RestController
-//@RequestMapping("/firestation")
-//public class FirestationController {
+//@RequestMapping("/childAlert")
+//public class ChildAlertController {
 //
 //    @Autowired
-//    private FirestationService service;
+//    private ChildAlertService ?;
 //
 //    @GetMapping("/{id}")
-//    public Firestation read(@PathVariable String id) {
+//    public ChildAlert read(@PathVariable String id) {
 //        return service.find(id);
 //    }
