@@ -4,11 +4,16 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynet.alerts.model.Objects;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 
+@Component
 public class AlertsObjectMapper {
+    private static final Logger logger = LogManager.getLogger("ObjectMapper");
 
     public static void main(String[] args) {
 
@@ -21,11 +26,16 @@ public class AlertsObjectMapper {
             objects = mapper.readValue(new File("src/main/resources/data.json"), Objects.class);
         } catch (JsonParseException e) {
             e.printStackTrace();
+            logger.error("Error parsing Json", e);
         } catch (JsonMappingException e) {
             e.printStackTrace();
+            logger.error("Error mapping Json", e);
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error("Error input or output", e);
         }
+        logger.info("Printed Json objects");
         System.out.println(objects);
     }
+
 }

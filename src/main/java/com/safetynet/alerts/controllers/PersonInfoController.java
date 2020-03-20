@@ -11,9 +11,9 @@
 //public class PersonInfoController {
 //
 //    @Autowired
-//    private PersonInfoService ?;
+//    private PersonDAOImpl PersonDAOImpl;
 //
-//    @GetMapping("/{id}")
-//    public PersonInfo read(@PathVariable String id) {
-//        return service.find(id);
+//    @GetMapping("/firstName={firstName}+lastName={lastName}")
+//    public PersonInfo read(@PathVariable String firstName lastName) {
+//        return PersonDAOImpl.getPersonInfo(firstName, lastName);
 //    }
