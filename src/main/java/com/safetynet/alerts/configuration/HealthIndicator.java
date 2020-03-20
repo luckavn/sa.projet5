@@ -1,4 +1,4 @@
-package com.safetynet.alerts.indicators;
+package com.safetynet.alerts.configuration;
 
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
