@@ -15,7 +15,7 @@ import java.io.IOException;
 public class AlertsObjectMapper {
     private static final Logger logger = LogManager.getLogger("ObjectMapper");
 
-    public static void main(String[] args) {
+    public static Objects readData() {
 
         /** Initialize mapper */
         Objects objects = null;
@@ -35,7 +35,7 @@ public class AlertsObjectMapper {
             logger.error("Error input or output", e);
         }
         logger.info("Printed Json objects");
-        System.out.println(objects);
+        return objects;
     }
 
 }
