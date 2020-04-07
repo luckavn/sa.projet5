@@ -1,11 +1,17 @@
 package com.safetynet.alerts.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.Date;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MedicalRecord {
     private String firstName;
     private String lastName;
-    private String birthdate;
+    @JsonFormat(pattern = "dd/MM/YYYY")
+    private Date birthdate;
     private List<String> medications;
     private List<String> allergies;
 
@@ -25,12 +31,13 @@ public class MedicalRecord {
         this.lastName = lastName;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public Date getBirthdate() {
+        Date birthDate = birthdate;
+        return birthDate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = new Date (birthdate.getTime());
     }
 
     public List<String> getMedications() {
@@ -49,14 +56,4 @@ public class MedicalRecord {
         this.allergies = allergies;
     }
 
-    @Override
-    public String toString() {
-        return "MedicalRecord{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthdate='" + birthdate + '\'' +
-                ", medications=" + medications +
-                ", allergies=" + allergies +
-                '}';
-    }
 }

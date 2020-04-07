@@ -1,11 +1,22 @@
 package com.safetynet.alerts.model;
 
+import com.safetynet.alerts.model.url.PersonInfo;
+
 import java.util.List;
 
 public class Objects {
     List<Person> persons;
     List<FireStation> firestations;
     List<MedicalRecord> medicalrecords;
+    List<PersonInfo> personInfos;
+
+    public List<PersonInfo> getPersonInfos() {
+        return personInfos;
+    }
+
+    public void setPersonInfos(List<PersonInfo> personInfos) {
+        this.personInfos = personInfos;
+    }
 
     public List<Person> getPersons() {
         return persons;
@@ -31,12 +42,4 @@ public class Objects {
         this.medicalrecords = medicalrecords;
     }
 
-    @Override
-    public String toString() {
-        return "Objects{" +
-                "persons=" + persons +
-                ", firestations=" + firestations +
-                ", medicalrecords=" + medicalrecords +
-                '}';
-    }
 }
