@@ -13,9 +13,9 @@ import java.io.IOException;
 
 @Component
 public class AlertsObjectMapper {
-    private static final Logger logger = LogManager.getLogger("ObjectMapper");
+    private static final Logger logger = LogManager.getLogger(AlertsObjectMapper.class);
 
-    public static Objects readData() {
+    public static Objects readDataObjects() {
 
         /** Initialize mapper */
         Objects objects = null;
@@ -37,5 +37,4 @@ public class AlertsObjectMapper {
         logger.info("Printed Json objects");
         return objects;
     }
-
 }
