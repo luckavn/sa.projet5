@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CommunityEmailControllerTest {
+public class FireControllerTest {
 
     @Autowired
     MockMvc mockmvc;
@@ -23,11 +23,11 @@ public class CommunityEmailControllerTest {
     PersonDAO personDAO;
 
     @Test
-    public void getCommunityEmailTest() throws Exception {
-        String city = "?city=Culver";
-        this.mockmvc.perform(get("/communityEmail" + city))
+    public void getInhabitantsAndStationFromAddressTest() throws Exception {
+        String address = "?address=892 Downing Ct";
+        this.mockmvc.perform(get("/fire" + address))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"email\":\"jaboyd@email.com\"},{\"email\":\"drk@email.com\"},{\"email\":\"tenz@email.com\"},{\"email\":\"tcoop@ymail.com\"},{\"email\":\"lily@email.com\"},{\"email\":\"soph@email.com\"},{\"email\":\"ward@email.com\"},{\"email\":\"zarc@email.com\"},{\"email\":\"reg@email.com\"},{\"email\":\"jpeter@email.com\"},{\"email\":\"aly@imail.com\"},{\"email\":\"bstel@email.com\"},{\"email\":\"ssanw@email.com\"},{\"email\":\"clivfd@ymail.com\"},{\"email\":\"gramps@email.com\"}]"))
+                .andExpect(content().json("[{\"lastName\":\"Zemicks\",\"phone\":\"841-874-7878\",\"age\":32,\"medications\":[\"aznol:60mg\",\"hydrapermazol:900mg\",\"pharmacol:5000mg\",\"terazine:500mg\"],\"allergies\":[\"peanut\",\"shellfish\",\"aznol\"],\"station\":\"2\"},{\"lastName\":\"Zemicks\",\"phone\":\"841-874-7512\",\"age\":35,\"medications\":[],\"allergies\":[],\"station\":\"2\"},{\"lastName\":\"Zemicks\",\"phone\":\"841-874-7512\",\"age\":3,\"medications\":[],\"allergies\":[],\"station\":\"2\"}]\n"))
                 .andDo(MockMvcResultHandlers.print());
     }
 }

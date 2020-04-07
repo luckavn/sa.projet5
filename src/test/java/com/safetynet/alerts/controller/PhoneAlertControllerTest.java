@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CommunityEmailControllerTest {
+public class PhoneAlertControllerTest {
 
     @Autowired
     MockMvc mockmvc;
@@ -23,11 +23,11 @@ public class CommunityEmailControllerTest {
     PersonDAO personDAO;
 
     @Test
-    public void getCommunityEmailTest() throws Exception {
-        String city = "?city=Culver";
-        this.mockmvc.perform(get("/communityEmail" + city))
+    public void getPhonesByStationTest() throws Exception {
+        String station = "?station=1";
+        this.mockmvc.perform(get("/phoneAlert" + station))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"email\":\"jaboyd@email.com\"},{\"email\":\"drk@email.com\"},{\"email\":\"tenz@email.com\"},{\"email\":\"tcoop@ymail.com\"},{\"email\":\"lily@email.com\"},{\"email\":\"soph@email.com\"},{\"email\":\"ward@email.com\"},{\"email\":\"zarc@email.com\"},{\"email\":\"reg@email.com\"},{\"email\":\"jpeter@email.com\"},{\"email\":\"aly@imail.com\"},{\"email\":\"bstel@email.com\"},{\"email\":\"ssanw@email.com\"},{\"email\":\"clivfd@ymail.com\"},{\"email\":\"gramps@email.com\"}]"))
+                .andExpect(content().json("[{\"phone\":\"841-874-6512\"},{\"phone\":\"841-874-8547\"},{\"phone\":\"841-874-7462\"},{\"phone\":\"841-874-7784\"}]"))
                 .andDo(MockMvcResultHandlers.print());
     }
 }

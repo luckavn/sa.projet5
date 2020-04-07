@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CommunityEmailControllerTest {
+public class PersonInfoControllerTest {
 
     @Autowired
     MockMvc mockmvc;
@@ -23,11 +23,29 @@ public class CommunityEmailControllerTest {
     PersonDAO personDAO;
 
     @Test
-    public void getCommunityEmailTest() throws Exception {
-        String city = "?city=Culver";
-        this.mockmvc.perform(get("/communityEmail" + city))
+    public void getPersonInfoAndDetailsWithFirstNameAndLastNameTest() throws Exception {
+        String firstnameLastname = "?firstname=Brian&lastname=Stelzer";
+        this.mockmvc.perform(get("/personInfo" + firstnameLastname))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"email\":\"jaboyd@email.com\"},{\"email\":\"drk@email.com\"},{\"email\":\"tenz@email.com\"},{\"email\":\"tcoop@ymail.com\"},{\"email\":\"lily@email.com\"},{\"email\":\"soph@email.com\"},{\"email\":\"ward@email.com\"},{\"email\":\"zarc@email.com\"},{\"email\":\"reg@email.com\"},{\"email\":\"jpeter@email.com\"},{\"email\":\"aly@imail.com\"},{\"email\":\"bstel@email.com\"},{\"email\":\"ssanw@email.com\"},{\"email\":\"clivfd@ymail.com\"},{\"email\":\"gramps@email.com\"}]"))
+                .andExpect(content().json("[[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"bstel@email.com\",\"age\":45,\"medications\":[\"ibupurin:200mg\",\"hydrapermazol:400mg\"],\"allergies\":[\"nillacilan\"]}]]\n"))
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void getPersonInfoAndDetailsWithLastNameTest() throws Exception {
+        String firstnameLastname = "?lastname=Stelzer";
+        this.mockmvc.perform(get("/personInfo" + firstnameLastname))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"bstel@email.com\",\"age\":45,\"medications\":[\"ibupurin:200mg\",\"hydrapermazol:400mg\"],\"allergies\":[\"nillacilan\"]}],[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"ssanw@email.com\",\"age\":40,\"medications\":[],\"allergies\":[]}],[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"bstel@email.com\",\"age\":6,\"medications\":[\"noxidian:100mg\",\"pharmacol:2500mg\"],\"allergies\":[]}]]\n"))
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void getChildListFromAddressTest() throws Exception {
+        String address = "?address=908 73rd St";
+        this.mockmvc.perform(get("/childAlert" + address))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]\n"))
                 .andDo(MockMvcResultHandlers.print());
     }
 }
