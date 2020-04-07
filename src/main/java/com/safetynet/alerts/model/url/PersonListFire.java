@@ -1,8 +1,9 @@
-package com.safetynet.alerts.model;
+package com.safetynet.alerts.model.url;
 
 import java.util.List;
 
 public class PersonListFire {
+    private String firstName;
     private String lastName;
     private String phone;
     private int age;
@@ -15,6 +16,14 @@ public class PersonListFire {
     }
 
     public PersonListFire() {
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -65,15 +74,4 @@ public class PersonListFire {
         this.station = station;
     }
 
-    @Override
-    public String toString() {
-        return "PersonListFire{" +
-                "lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", age=" + age +
-                ", medications=" + medications +
-                ", allergies=" + allergies +
-                ", station=" + station +
-                '}';
-    }
 }

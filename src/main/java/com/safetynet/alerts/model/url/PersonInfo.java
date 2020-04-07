@@ -1,4 +1,4 @@
-package com.safetynet.alerts.model;
+package com.safetynet.alerts.model.url;
 
 import java.util.List;
 
@@ -58,15 +58,4 @@ public class PersonInfo {
         this.allergies = allergies;
     }
 
-    @Override
-    public String toString() {
-        return "PersonInfo{" +
-                "lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", age=" + age +
-                ", medications=" + medications +
-                ", allergies=" + allergies +
-                '}';
-    }
 }

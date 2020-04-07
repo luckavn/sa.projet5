@@ -1,4 +1,4 @@
-package com.safetynet.alerts.model;
+package com.safetynet.alerts.model.url;
 
 public class Phone {
 
@@ -16,10 +16,4 @@ public class Phone {
         this.phone = phone;
     }
 
-    @Override
-    public String toString() {
-        return "Phone{" +
-                "phone='" + phone + '\'' +
-                '}';
-    }
 }

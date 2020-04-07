@@ -1,4 +1,6 @@
-package com.safetynet.alerts.model;
+package com.safetynet.alerts.model.url;
+
+import com.safetynet.alerts.model.Person;
 
 import java.util.List;
 
@@ -40,13 +42,4 @@ public class ChildInfo {
         this.householdMembers = householdMembers;
     }
 
-    @Override
-    public String toString() {
-        return "ChildInfo{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", householdMembers=" + householdMembers +
-                '}';
-    }
 }

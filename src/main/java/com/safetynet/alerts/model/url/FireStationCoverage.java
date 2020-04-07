@@ -1,12 +1,10 @@
-package com.safetynet.alerts.model;
+package com.safetynet.alerts.model.url;
 
 public class FireStationCoverage {
     private String firstName;
     private String lastName;
     private String address;
     private String phone;
-    private int adults;
-    private int childs;
 
     public String getFirstName() {
         return firstName;
@@ -40,31 +38,4 @@ public class FireStationCoverage {
         this.phone = phone;
     }
 
-    public int getAdultCounter() {
-        return adults;
-    }
-
-    public void setAdultCounter(int adultCounter) {
-        this.adults = adultCounter;
-    }
-
-    public int getChildCounter() {
-        return childs;
-    }
-
-    public void setChildCounter(int childCounter) {
-        this.childs = childCounter;
-    }
-
-    @Override
-    public String toString() {
-        return "FireStationCoverage{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", adultCounter=" + adults +
-                ", childCounter=" + childs +
-                '}';
-    }
 }
