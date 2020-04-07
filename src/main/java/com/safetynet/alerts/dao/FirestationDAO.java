@@ -1,25 +1,30 @@
 package com.safetynet.alerts.dao;
 
-import com.safetynet.alerts.model.Person;
+import com.safetynet.alerts.model.FireStation;
+import com.safetynet.alerts.model.url.FireStationCoverage;
+import com.safetynet.alerts.model.url.FireStationCoverageAndCounter;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.List;
 
-public interface PersonDAO {
+@Component
+public interface FirestationDAO {
 
-    List<Person> getPersons();
+    String findStationNumberByAddress(String address);
 
-    void addPerson(Person person);
+    List<FireStation> getFireStations();
 
-    void modifyPerson(Person person) throws ParseException;
+    FireStationCoverageAndCounter getPersonListCoveredByStation(String station) throws ParseException;
 
-    boolean removePerson(String firstName, String lastName);
+    void addFireStation(FireStation fireStation);
 
-    List<String> getPersonInfoAndDetails(String firstName, String lastName) throws ParseException;
+    String modifyFireStation(FireStation fireStation);
 
-    List<String> getCityEmails(String city);
+    String removeFireStationFromAddress(String address);
 
-    List<String> getPhonesByStation(Integer station);
+    String removeMultipleFireStations(String station);
 
+    List<String> resolveAddressesByStationNumber(List<String> list);
 }
 
