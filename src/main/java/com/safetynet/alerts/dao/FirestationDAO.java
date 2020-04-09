@@ -17,7 +17,7 @@ public interface FirestationDAO {
 
     FireStationCoverageAndCounter getPersonListCoveredByStation(String station) throws ParseException;
 
-    void addFireStation(FireStation fireStation);
+    String addFireStation(FireStation fireStation);
 
     String modifyFireStation(FireStation fireStation);
 

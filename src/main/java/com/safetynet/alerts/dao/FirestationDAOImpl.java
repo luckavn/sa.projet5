@@ -78,8 +78,9 @@ public class FirestationDAOImpl implements FirestationDAO {
     }
 
     @Override
-    public void addFireStation(FireStation fireStation) {
+    public String addFireStation(FireStation fireStation) {
         fireStations.add(fireStation);
+        return "Firestation added to the list! :)";
     }
 
     @Override
@@ -90,6 +91,7 @@ public class FirestationDAOImpl implements FirestationDAO {
             if (fs.getAddress().contentEquals(fireStation.getAddress())) {
                 fireStations.set(pos, fireStation);
             }
+            pos++;
             return "Modified firestation: " + fireStation.getAddress();
         }
         return "Firestation not found";
@@ -100,7 +102,7 @@ public class FirestationDAOImpl implements FirestationDAO {
         for (FireStation fireStation : fireStations) {
             if (fireStation.getAddress().contentEquals(address)) {
                 fireStations.remove(fireStation);
-                return "Firestation deleted: " + fireStation;
+                return "Infos about deleted firestation: " + fireStation.getStation() + fireStation.getAddress();
             }
         }
         return "Firesation not found";

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.safetynet.alerts</OriginalElement>
+  <nodes>
+    <node x="-214.76486688230906" y="132.3408808161234">com.safetynet.alerts.controller</node>
+    <node x="20.850957949738756" y="214.72306543916397">com.safetynet.alerts.AlertsApplication</node>
+    <node x="-214.7001741726798" y="180.27718337894999">com.safetynet.alerts.dao</node>
+    <node x="-214.76486688230904" y="82.36128390146803">com.safetynet.alerts.configuration</node>
+    <node x="20.8509579497387" y="151.14854441403335">com.safetynet.alerts.AlertsObjectMapper</node>
+    <node x="-216.23189848220954" y="278.2975864642946">com.safetynet.alerts.utils</node>
+    <node x="-215.80741477979598" y="229.27693456083603">com.safetynet.alerts.model</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.1591885441527447" x="113.02549209967907" y="236.1989014196157" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

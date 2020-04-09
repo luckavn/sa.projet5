@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.safetynet.alerts.model</OriginalElement>
+  <nodes>
+    <node x="156.0" y="148.0">com.safetynet.alerts.model.Objects</node>
+    <node x="0.0" y="222.0">com.safetynet.alerts.model.Person</node>
+    <node x="0.0" y="148.0">com.safetynet.alerts.model.url</node>
+    <node x="0.0" y="74.0">com.safetynet.alerts.model.FireStation</node>
+    <node x="0.0" y="0.0">com.safetynet.alerts.model.MedicalRecord</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="127.0" y="125.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
