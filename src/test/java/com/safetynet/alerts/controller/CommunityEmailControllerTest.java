@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class CommunityEmailControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -27,7 +30,7 @@ public class CommunityEmailControllerTest {
         String city = "?city=Culver";
         this.mockmvc.perform(get("/communityEmail" + city))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"email\":\"jaboyd@email.com\"},{\"email\":\"drk@email.com\"},{\"email\":\"tenz@email.com\"},{\"email\":\"tcoop@ymail.com\"},{\"email\":\"lily@email.com\"},{\"email\":\"soph@email.com\"},{\"email\":\"ward@email.com\"},{\"email\":\"zarc@email.com\"},{\"email\":\"reg@email.com\"},{\"email\":\"jpeter@email.com\"},{\"email\":\"aly@imail.com\"},{\"email\":\"bstel@email.com\"},{\"email\":\"ssanw@email.com\"},{\"email\":\"clivfd@ymail.com\"},{\"email\":\"gramps@email.com\"}]"))
+                .andExpect(content().json(myBundle.getString("cect")))
                 .andDo(MockMvcResultHandlers.print());
     }
 }

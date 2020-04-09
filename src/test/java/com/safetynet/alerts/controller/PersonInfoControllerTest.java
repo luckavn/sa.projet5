@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PersonInfoControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -27,7 +30,7 @@ public class PersonInfoControllerTest {
         String firstnameLastname = "?firstname=Brian&lastname=Stelzer";
         this.mockmvc.perform(get("/personInfo" + firstnameLastname))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"bstel@email.com\",\"age\":45,\"medications\":[\"ibupurin:200mg\",\"hydrapermazol:400mg\"],\"allergies\":[\"nillacilan\"]}]]\n"))
+                .andExpect(content().json(myBundle.getString("pict.gipfl")))
                 .andDo(MockMvcResultHandlers.print());
     }
 
@@ -36,7 +39,7 @@ public class PersonInfoControllerTest {
         String firstnameLastname = "?lastname=Stelzer";
         this.mockmvc.perform(get("/personInfo" + firstnameLastname))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"bstel@email.com\",\"age\":45,\"medications\":[\"ibupurin:200mg\",\"hydrapermazol:400mg\"],\"allergies\":[\"nillacilan\"]}],[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"ssanw@email.com\",\"age\":40,\"medications\":[],\"allergies\":[]}],[{\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"email\":\"bstel@email.com\",\"age\":6,\"medications\":[\"noxidian:100mg\",\"pharmacol:2500mg\"],\"allergies\":[]}]]\n"))
+                .andExpect(content().json(myBundle.getString("pict.gipl")))
                 .andDo(MockMvcResultHandlers.print());
     }
 

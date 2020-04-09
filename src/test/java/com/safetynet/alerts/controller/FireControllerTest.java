@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class FireControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -27,7 +30,7 @@ public class FireControllerTest {
         String address = "?address=892 Downing Ct";
         this.mockmvc.perform(get("/fire" + address))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"lastName\":\"Zemicks\",\"phone\":\"841-874-7878\",\"age\":32,\"medications\":[\"aznol:60mg\",\"hydrapermazol:900mg\",\"pharmacol:5000mg\",\"terazine:500mg\"],\"allergies\":[\"peanut\",\"shellfish\",\"aznol\"],\"station\":\"2\"},{\"lastName\":\"Zemicks\",\"phone\":\"841-874-7512\",\"age\":35,\"medications\":[],\"allergies\":[],\"station\":\"2\"},{\"lastName\":\"Zemicks\",\"phone\":\"841-874-7512\",\"age\":3,\"medications\":[],\"allergies\":[],\"station\":\"2\"}]\n"))
+                .andExpect(content().json(myBundle.getString("fct")))
                 .andDo(MockMvcResultHandlers.print());
     }
 }

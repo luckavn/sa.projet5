@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -16,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class FirestationControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -28,20 +31,20 @@ public class FirestationControllerTest {
         String station = "?stationNumber=2";
         this.mockmvc.perform(get("/firestation" + station))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"fireStationCoverages\":[{\"firstName\":\"Jonanathan\",\"lastName\":\"Marrack\",\"address\":\"29 15th St\",\"phone\":\"841-874-6513\"},{\"firstName\":\"Sophia\",\"lastName\":\"Zemicks\",\"address\":\"892 Downing Ct\",\"phone\":\"841-874-7878\"},{\"firstName\":\"Warren\",\"lastName\":\"Zemicks\",\"address\":\"892 Downing Ct\",\"phone\":\"841-874-7512\"},{\"firstName\":\"Zach\",\"lastName\":\"Zemicks\",\"address\":\"892 Downing Ct\",\"phone\":\"841-874-7512\"},{\"firstName\":\"Eric\",\"lastName\":\"Cadigan\",\"address\":\"951 LoneTree Rd\",\"phone\":\"841-874-7458\"}],\"adultCount\":4,\"childCount\":1}\n"))
+                .andExpect(content().json(myBundle.getString("fsct.gi")))
                 .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void addFirestationTest() throws Exception {
-        this.mockmvc.perform(post("/firestation").contentType(MediaType.APPLICATION_JSON).content("{\"address\":\"1509 Culver St\",\"station\":\"3\"}\n"))
+        this.mockmvc.perform(post("/firestation").contentType(MediaType.APPLICATION_JSON).content(myBundle.getString("fsct.add")))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void modifyFirestationTest() throws Exception {
-        this.mockmvc.perform(put("/firestation").contentType(MediaType.APPLICATION_JSON).content("{\"address\":\"1509 Culver St\",\"station\":1000}\n"))
+        this.mockmvc.perform(put("/firestation").contentType(MediaType.APPLICATION_JSON).content(myBundle.getString("fsct.md")))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }

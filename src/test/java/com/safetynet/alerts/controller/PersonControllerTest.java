@@ -9,12 +9,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PersonControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -24,14 +27,14 @@ public class PersonControllerTest {
 
     @Test
     public void addPersonTest() throws Exception {
-        this.mockmvc.perform(post("/person").contentType(MediaType.APPLICATION_JSON).content("{\"firstName\":\"Lucas\",\"lastName\":\"Vannier\",\"address\":\"71 boulevard Richard Wallace\",\"city\":\"Puteaux\",\"zip\":92800,\"phone\":\"0777281554\",\"email\":\"lucasvannier@gmail.com\"}\n"))
+        this.mockmvc.perform(post("/person").contentType(MediaType.APPLICATION_JSON).content(myBundle.getString("pct.add")))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void modifyPersonTest() throws Exception {
-        this.mockmvc.perform(put("/person").contentType(MediaType.APPLICATION_JSON).content("{\"firstName\":\"John\",\"lastName\":\"Boyd\",\"address\":\"Valeur remplacée\",\"city\":\"Valeur remplacée\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"Valeur remplacée\"}\n"))
+        this.mockmvc.perform(put("/person").contentType(MediaType.APPLICATION_JSON).content(myBundle.getString("pct.md")))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }

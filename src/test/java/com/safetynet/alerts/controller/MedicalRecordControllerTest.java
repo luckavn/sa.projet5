@@ -9,12 +9,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MedicalRecordControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -24,14 +27,14 @@ public class MedicalRecordControllerTest {
 
     @Test
     public void addMedicalRecordTest() throws Exception {
-        this.mockmvc.perform(post("/medicalRecord").contentType(MediaType.APPLICATION_JSON).content("{\"firstName\":\"Lucas\",\"Vannier\":\"Boyd\",\"birthdate\":\"01/12/1992\",\"medications\":[\"aznol:3500mg\",\"hydrapermazol:10000mg\"],\"allergies\":[\"nillacilan\"]}\n"))
+        this.mockmvc.perform(post("/medicalRecord").contentType(MediaType.APPLICATION_JSON).content(myBundle.getString("mrct.add")))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void modifyMedicalRecordTest() throws Exception {
-        this.mockmvc.perform(put("/medicalRecord").contentType(MediaType.APPLICATION_JSON).content("{\"firstName\":\"Tenley\",\"lastName\":\"Boyd\",\"birthdate\":\"02/18/2012\",\"medications\":[],\"allergies\":[\"modified line\"]}\n"))
+        this.mockmvc.perform(put("/medicalRecord").contentType(MediaType.APPLICATION_JSON).content(myBundle.getString("mrct.md")))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }

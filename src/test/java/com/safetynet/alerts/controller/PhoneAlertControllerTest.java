@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import java.util.ResourceBundle;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PhoneAlertControllerTest {
+    ResourceBundle myBundle = ResourceBundle.getBundle("TestResponses");
 
     @Autowired
     MockMvc mockmvc;
@@ -27,7 +30,7 @@ public class PhoneAlertControllerTest {
         String station = "?station=1";
         this.mockmvc.perform(get("/phoneAlert" + station))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"phone\":\"841-874-6512\"},{\"phone\":\"841-874-8547\"},{\"phone\":\"841-874-7462\"},{\"phone\":\"841-874-7784\"}]"))
+                .andExpect(content().json(myBundle.getString("pact.pa")))
                 .andDo(MockMvcResultHandlers.print());
     }
 }
