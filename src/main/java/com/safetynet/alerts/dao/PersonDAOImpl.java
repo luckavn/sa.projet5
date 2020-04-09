@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Component
 public class PersonDAOImpl implements PersonDAO {
@@ -35,8 +34,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public void addPerson(Person person) {
+    public String addPerson(Person person) {
         persons.add(person);
+        return "Person added ! :)";
     }
 
     @Override
@@ -47,6 +47,7 @@ public class PersonDAOImpl implements PersonDAO {
             if (ps.getFirstName().contentEquals(person.getFirstName()) && ps.getLastName().contentEquals(person.getLastName())) {
                 persons.set(pos, person);
             }
+            pos++;
             return "Modified person: " + person.getFirstName() + " " + person.getLastName();
         }
         return "Person not found";
@@ -57,7 +58,7 @@ public class PersonDAOImpl implements PersonDAO {
         for (Person person : persons) {
             if (person.getFirstName().contentEquals(firstName) && person.getLastName().contentEquals(lastName)) {
                 persons.remove(person);
-                return "Deleted person: " + person;
+                return "Deleted person: " + person.getFirstName() + " " + person.getLastName();
             }
         }
         return "Person not found";
@@ -285,7 +286,7 @@ public class PersonDAOImpl implements PersonDAO {
             floodListFire.setAllergies(medicalRecord.getAllergies());
             floodListFire.setMedications(medicalRecord.getMedications());
             for (Person person : persons) {
-                if(person.getFirstName().contentEquals(medicalRecord.getFirstName()) && person.getLastName().contentEquals(medicalRecord.getLastName())) {
+                if (person.getFirstName().contentEquals(medicalRecord.getFirstName()) && person.getLastName().contentEquals(medicalRecord.getLastName())) {
                     floodListFire.setPhone(person.getPhone());
                     floodListFireList.add(floodListFire);
                 }

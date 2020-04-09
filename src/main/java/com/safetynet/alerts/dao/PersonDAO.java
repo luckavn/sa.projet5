@@ -11,7 +11,7 @@ import java.util.List;
 public interface PersonDAO {
     List<Person> getPersons();
 
-    void addPerson(Person person);
+    String addPerson(Person person);
 
     String modifyPerson(Person person) throws ParseException;
 
