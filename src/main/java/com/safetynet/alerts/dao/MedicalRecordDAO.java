@@ -19,7 +19,7 @@ public interface MedicalRecordDAO {
 
     List<MedicalRecord> getMedicalRecordsFromAddress(String address);
 
-    void addMedicalRecord(MedicalRecord medicalRecord);
+    String addMedicalRecord(MedicalRecord medicalRecord);
 
     String modifyMedicalRecord(MedicalRecord medicalRecord);
 

@@ -97,8 +97,9 @@ public class MedicalRecordDAOImpl implements MedicalRecordDAO {
 
 
     @Override
-    public void addMedicalRecord(MedicalRecord medicalRecord) {
+    public String addMedicalRecord(MedicalRecord medicalRecord) {
         medicalRecords.add(medicalRecord);
+        return "Medical record added ! :)";
     }
 
     @Override
@@ -106,7 +107,7 @@ public class MedicalRecordDAOImpl implements MedicalRecordDAO {
         for (MedicalRecord medicalRecord : medicalRecords) {
             if (medicalRecord.getFirstName().contentEquals(firstName) && medicalRecord.getLastName().contentEquals(lastName)) {
                 medicalRecords.remove(medicalRecord);
-                return "Medical record deleted: " + medicalRecord;
+                return "Medical record deleted: " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName();
             }
         }
         return "Medical record not found";
@@ -120,6 +121,7 @@ public class MedicalRecordDAOImpl implements MedicalRecordDAO {
             if (md.getFirstName().contentEquals(medicalRecord.getFirstName()) && md.getLastName().contentEquals(medicalRecord.getLastName())) {
                 medicalRecords.set(pos, medicalRecord);
             }
+            pos++;
             return "Modified medical record : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName();
         }
         return "Medical record not found";
