@@ -206,7 +206,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public List<ChildInfo> getChildListFromAddress(String address) throws ParseException {
+    public List<ChildInfo> getChildListFromAddress(String address) throws Exception {
         List<ChildInfo> result = new ArrayList<ChildInfo>();
 
         for (Person person : persons) {
@@ -228,7 +228,10 @@ public class PersonDAOImpl implements PersonDAO {
                 }
             }
         }
-        return result;
+        if (result.isEmpty()) {
+            throw new Exception ("No child found at this specific address");
+        }
+            return result;
     }
 
     @Override

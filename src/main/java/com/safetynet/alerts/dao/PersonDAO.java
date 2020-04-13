@@ -35,7 +35,7 @@ public interface PersonDAO {
 
     List<Phone> getPhoneByStation(String station);
 
-    List<ChildInfo> getChildListFromAddress(String address) throws ParseException;
+    List<ChildInfo> getChildListFromAddress(String address) throws Exception;
 
     List<PersonListFire> getInhabitantsAndStationFromAddress(String address) throws ParseException;
 
