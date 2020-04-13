@@ -16,9 +16,10 @@ public class MedicalRecordController {
     private MedicalRecordDAO medicalRecordDAO;
 
     @PostMapping
-    public void addMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+    public String addMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
         logger.info("Add medical record succeeded");
         medicalRecordDAO.addMedicalRecord(medicalRecord);
+        return "Medical record added:" + medicalRecord.getFirstName() + ", " + medicalRecord.getLastName();
     }
 
     @PutMapping

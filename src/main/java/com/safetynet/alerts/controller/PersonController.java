@@ -18,9 +18,10 @@ public class PersonController {
     private PersonDAO personDAO;
 
     @PostMapping
-    public void addPerson(@RequestBody Person person) {
+    public String addPerson(@RequestBody Person person) {
         logger.info("Add person succeeded");
         personDAO.addPerson(person);
+        return "Person added:" + person.getFirstName() + " " + person.getLastName();
     }
 
     @PutMapping

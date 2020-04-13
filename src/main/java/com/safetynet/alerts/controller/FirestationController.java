@@ -28,8 +28,9 @@ public class FirestationController {
     }
 
     @PostMapping
-    public void addFirestation(@RequestBody FireStation fireStation) {
+    public String addFirestation(@RequestBody FireStation fireStation) {
         firestationDAO.addFireStation(fireStation);
+        return "Firestation added:" + fireStation.getAddress() + " " + fireStation.getStation();
     }
 
     @PutMapping
